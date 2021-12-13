@@ -171,7 +171,51 @@ preferredSize: const Size.fromHeight(90),
                   );
                 },
                 itemCount: 3),
-
+              const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                'Contacts',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+              ),
+            ),
+            ListView.separated(
+                controller: _scrollController,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return  ListTile(
+                     onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ContactDetailsView(
+                            contact: Contact(
+                                country: 'Ghana',
+                                email: 'bright@ghanatechlab.com',
+                                name: 'Brother Charles',
+                                phone: '+233 24 540668235',
+                                region: 'Greater Accra'));
+                      }));
+                     },
+                    leading: const  CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/person_1.jpg'),
+                    ),
+                    title: const  Text(
+                      'Brother Charles',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    subtitle: const  Text('+233 24 06 68 235 '),
+                    trailing: const IconButton(
+                        onPressed: null, icon: Icon(Icons.more_horiz)),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const Divider(
+                    indent: 25,
+                    thickness: 2,
+                  );
+                },
+                itemCount: 5),
           ],
         ),
       ),
